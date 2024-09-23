@@ -1,31 +1,3 @@
-class Solution:
-    @staticmethod
-    def prepare_hashmap(word):
-        char_hashmap = {}
-        for c in word:
-            char_hashmap[c] = char_hashmap.get(c, 0) + 1
-        return char_hashmap
-
-    @staticmethod
-    def compare_dicts(dict1, dict2):
-
-        # Option 1: Using built-in method:
-        return dict1 == dict2
-
-        # Option 2: Using custom method:
-
-        # Step 1: Early exit if keys are different
-        if dict1.keys() != dict2.keys():
-            return False
-
-        # Step 2: Compare values for each key
-        for key in dict1:
-            if dict1[key] != dict2[key]:
-                return False
-
-        return True
-
-
 # Check using `if complement in num_map:`:
 # - Time Complexity: O(1) (constant time) due to dictionary hash lookup.
 # - This is more readable and directly checks for the presence of the key.

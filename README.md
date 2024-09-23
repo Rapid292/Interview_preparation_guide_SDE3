@@ -107,3 +107,22 @@ This guide will help you prepare for a data structure and algorithm (DS/Algo) qu
 ### Cross-Functional Collaboration & Leadership
 - **Key Focus**: Leading teams, cross-functional collaboration, conflict resolution.
 - **Resources**: Leadership-focused mock interviews, case studies on team management.
+
+
+### AS&ALGO Common Patterns:
+video[https://www.youtube.com/watch?v=DjYZk8nrXVY]
+0:33 => Prefix Sum
+1:25 => Two Pointer
+2:05 => Sliding Window
+2:54 => Fast & Slow Pointer
+3:39 => Linked List In-Place Reversal
+4:36 => Monotonic Stack
+5:26 => Top 'k' Elements
+6:14 => Quick Select
+6:33 => Overlapping Intervals
+7:25 => Modified Binary Search
+8:56 => Depth-First Search(DFS)
+9:32 => Breadth-First Search(BFS)
+10:11 => Matrix Traversal
+11:04 => Backtracking
+11:52 => Dynamic Programming
