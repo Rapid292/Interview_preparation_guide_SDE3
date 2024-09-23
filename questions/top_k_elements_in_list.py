@@ -7,16 +7,18 @@ import heapq
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 
+        # Step 1: Build the frequency hashmap
         freq_hashmap = defaultdict(int)
         for num in nums:
             freq_hashmap[num] += 1
 
-        # Bucket sort: creating buckets for the frequencies
+        # Step 2: Initialize the bucket sort list correctly - Bucket Algorithm
         freq_list = [[] for _ in range(len(nums) + 1)]
 
         # Possible Mistake to avoid in future
-        # freq_list = [[]]*(len(nums)+1) # Issue to avoid in future here only single list is referenced
+        # freq_list = [[]] * (len(nums) + 1)  # Incorrect: Single list referenced multiple times
 
+        # Step 3: Populate the bucket list with numbers based on their frequencies
         for n, freq in freq_hashmap.items():
             if freq>0:
                 freq_list[freq].append(n)
