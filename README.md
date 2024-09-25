@@ -111,7 +111,9 @@ This guide will help you prepare for a data structure and algorithm (DS/Algo) qu
 
 # Common Patterns:
 
-### AS&ALGO Common Patterns:
+### DS & ALGO Common Patterns:
+![Common Patterns Roadmap](ds_and_algo_roadmap.png)
+https://neetcode.io/roadmap
 video[https://www.youtube.com/watch?v=DjYZk8nrXVY]
 1. **Prefix Sum**
 2. **Two Pointer**
