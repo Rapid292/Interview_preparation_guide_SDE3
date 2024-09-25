@@ -1,0 +1,11 @@
+Prompt_1:
+For this code write the below things as comments in the code
+Common mistakes
+Notes:
+    Time Complexity
+    Space Complexity
+Approach (keep approach as brief as possible)
+
+Prompt_2:
+
+Add example that makes code easy to understand as comments to selected utility functions

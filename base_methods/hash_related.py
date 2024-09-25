@@ -1,3 +1,5 @@
+from collections import Counter
+
 class Solution:
     @staticmethod
     def prepare_hashmap(word):
@@ -7,24 +9,17 @@ class Solution:
         return char_hashmap
 
     @staticmethod
+    def prepare_hashmap(word):
+        # Example: word = "hello"
+        # char_count_hashmap = {"h": 1, "e": 1, "l": 2, "o": 1}
+        char_count_hashmap = Counter(word)
+        return char_count_hashmap
+
+    @staticmethod
     def compare_dicts(dict1, dict2):
 
-        # Option 1: Using built-in method:
+        # Using built-in method:
         return dict1 == dict2
-
-        # Option 2: Using custom method:
-
-        # Step 1: Early exit if keys are different
-        if dict1.keys() != dict2.keys():
-            return False
-
-        # Step 2: Compare values for each key
-        for key in dict1:
-            if dict1[key] != dict2[key]:
-                return False
-
-        return True
-
 
 # Check using `if complement in num_map:`:
 # - Time Complexity: O(1) (constant time) due to dictionary hash lookup.

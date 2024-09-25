@@ -3,7 +3,6 @@ from typing import List
 import heapq
 
 # Solution 1: Bucket Sort -> time complexity: O(NlogK)
-
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 

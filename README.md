@@ -109,20 +109,75 @@ This guide will help you prepare for a data structure and algorithm (DS/Algo) qu
 - **Resources**: Leadership-focused mock interviews, case studies on team management.
 
 
+# Common Patterns:
+
 ### AS&ALGO Common Patterns:
 video[https://www.youtube.com/watch?v=DjYZk8nrXVY]
-0:33 => Prefix Sum
-1:25 => Two Pointer
-2:05 => Sliding Window
-2:54 => Fast & Slow Pointer
-3:39 => Linked List In-Place Reversal
-4:36 => Monotonic Stack
-5:26 => Top 'k' Elements
-6:14 => Quick Select
-6:33 => Overlapping Intervals
-7:25 => Modified Binary Search
-8:56 => Depth-First Search(DFS)
-9:32 => Breadth-First Search(BFS)
-10:11 => Matrix Traversal
-11:04 => Backtracking
-11:52 => Dynamic Programming
+=> Prefix Sum
+=> Two Pointer
+=> Sliding Window
+=> Fast & Slow Pointer
+=> Linked List In-Place Reversal
+=> Monotonic Stack
+=> Top 'k' Elements
+=> Quick Select
+=> Overlapping Intervals
+=> Modified Binary Search
+=> Depth-First Search(DFS)
+=> Breadth-First Search(BFS)
+=> Matrix Traversal
+=> Backtracking
+=> Dynamic Programming
+
+
+## LLD: - video[https://www.youtube.com/watch?v=OhCp6ppX6bg]
+![Common Design Patterns](common_LLD_questions.png)
+https://github.com/ashishps1/awesome-low-level-design
+### 10 Common LLD Interview Problems
+1. **Design a parking lot**
+2. **Design a vending machine**
+3. **Design an elevator system**
+4. **Design LRU cache**
+5. **Design a chess game**
+6. **Design snake and ladders**
+7. **Design Splitwise**
+8. **Design logging framework**
+9. **Design hotel management system**
+10. **Design movie ticket booking syetem**
+
+
+## Design Patterns:
+![Common Design Patterns](common_design_patterns.png)
+https://refactoring.guru/design-patterns
+
+### Important Design Patterns
+- **Singleton**
+- **Factory**
+- **Abstract Factory**
+- **Builder**
+- **Adapter**
+- **Decorator**
+- **Facade**
+- **Composite**
+- **Observer**
+- **Command**
+- **Strategy**
+- **State**
+- **Template Method**
+
+
+## System Design: - video[https://www.youtube.com/watch?v=l3X1t3kpmwY]
+![Common System Designs](common_system_design_questions.png)
+https://github.com/ashishps1/awesome-system-design-resources
+
+### 10 Common System Design Problems
+1. **Design a URL shortening service like TinyURL**
+2. **Design a social media platform like Twitter/Instagram**
+3. **Design a chat application like WhatsApp/Slack**
+4. **Design a web crawler**
+5. **Design a video streaming service like YouTube/Netflix**
+6. **Design an e-commerce platform like Amazon**
+7. **Design a ride-sharing service like Uber/Lyft**
+8. **Design a notification system**
+9. **Design a key-value store like Redis**
+10. **Design a scalable logging and monitoring system**
