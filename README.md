@@ -214,6 +214,7 @@ video[https://www.youtube.com/watch?v=DjYZk8nrXVY]
 ### LLD: - video[https://www.youtube.com/watch?v=OhCp6ppX6bg]
 ![Common Design Patterns](common_LLD_questions.png)
 https://github.com/ashishps1/awesome-low-level-design
+[Personal LLD Interview Questions](https://docs.google.com/document/d/1X3zY2E-k7KnJUR2uFmDagl6ClDH5Etag88fSuQ80ZkY/edit#heading=h.uirhx9hdnavb)
 #### 10 Common LLD Interview Problems
 1. **Design a parking lot** [Design a parking lot](https://docs.google.com/document/d/1gP56IvFveexv_zi5RNlNEGTa9bpEp4ocyDk54bcj1Oo/edit?usp=sharing)
 2. **Design a vending machine** [Design a vending machine]()
