@@ -183,3 +183,34 @@ https://github.com/ashishps1/awesome-system-design-resources
 8. **Design a notification system**
 9. **Design a key-value store like Redis**
 10. **Design a scalable logging and monitoring system**
+
+## SOLID Principles:
+![SOLID Principles](https://miro.medium.com/v2/resize:fit:1400/1*x46y5JxDw_M8g5oR9mQ0Fg.png)
+
+1. **Single Responsibility Principle**
+   - A class should have only one responsibility.
+2. **Open/Closed Principle**
+   - Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.
+3. **Liskov Substitution Principle**
+   - Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program.
+4. **Interface Segregation Principle**
+   - Clients should not be forced to depend on interfaces they do not use.
+5. **Dependency Inversion Principle**
+   - High-level modules should not depend on low-level modules. Both should depend on abstractions.
+   - Abstractions should not depend on details. Details should depend on abstractions.
+
+
+## Behavioral & Leadership Interviews:
+![Behavioral & Leadership Interviews](behavioral_leadership_interviews.png)
+
+### Common Questions
+1. **Leadership in Tight Deadlines**
+2. **Conflict with Team Members**
+3. **Handling Large Projects**
+4. **Mentoring Junior Engineers**
+5. **Workplace Conflict Resolution**
+6. **Handling Large Projects**
+7. **Workplace Conflict Resolution**
+8. **Handling Large Projects**
+9. **Workplace Conflict Resolution**
+10. **Handling Large Projects**
