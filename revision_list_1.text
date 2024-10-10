@@ -5,3 +5,5 @@
 - products-of-array-discluding-self
 - three_sum -> two-integer-sum-ii
 - longest-substring-without-duplicates
+- dynamic_programming/min-cost-climbing-stairs.py
+- dynamic_programming/house-robber.py
