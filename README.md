@@ -230,6 +230,7 @@ https://github.com/ashishps1/awesome-low-level-design
 
 ### System Design: - video[https://www.youtube.com/watch?v=l3X1t3kpmwY]
 ![Common System Designs](common_system_design_questions.png)
+![Great Resource for System Design](https://systemdesignschool.io/problems/)
 https://github.com/ashishps1/awesome-system-design-resources
 #### 10 Common System Design Problems
 1. **Design a URL shortening service like TinyURL**
@@ -254,3 +255,7 @@ https://github.com/ashishps1/awesome-system-design-resources
 4. **Mentoring Junior Engineers**
 5. **Workplace Conflict Resolution**
 
+
+
+### REMOTE JOBS:
+![Remote Jobs Repo](https://github.com/lukasz-madon/awesome-remote-job?tab=readme-ov-file)
