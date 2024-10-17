@@ -9,139 +9,127 @@ The system should prioritize requests based on the direction of travel and the p
 The elevators should be able to handle multiple requests concurrently and process them in an optimal order.
 The system should ensure thread safety and prevent race conditions when multiple threads interact with the elevators.
 """
-import time
+
 from enum import Enum
-from threading import Thread, Lock, Condition
 
-
+# Elevator state
 class Direction(Enum):
     UP = 1
     DOWN = 2
+    IDLE = 3
 
-class Request:
-    def __init__(self, source_floor, destination_floor):
-        # This class follows the **Single Responsibility Principle (SRP)**
-        # by only encapsulating the request details (source and destination).
-        self.source_floor = source_floor
-        self.destination_floor = destination_floor
+class Status(Enum):
+    MOVING = 1
+    STOPPED = 2
+    MAINTENANCE = 3
 
 class Elevator:
-    def __init__(self, id: int, capacity: int):
-        # The **Single Responsibility Principle (SRP)** is applied here as this class is responsible
-        # for handling elevator-specific operations (moving and processing requests).
-        # **Factory Method Pattern** could be considered, as Elevator objects are created dynamically in ElevatorController.
-        self.id = id
-        self.capacity = capacity
-        self.current_floor = 1
-        self.current_direction = Direction.UP
-        self.requests = []
-        self.lock = Lock()
-        self.condition = Condition(self.lock)
+    def __init__(self, id, total_floors):
+        self.id = id                    # Unique ID for the elevator
+        self.current_floor = 0           # Starting floor of the elevator
+        self.direction = Direction.IDLE  # Initial direction
+        self.status = Status.STOPPED     # Initial status (not moving)
+        self.requests = []               # List of floors the elevator has to visit
+        self.total_floors = total_floors # Total number of floors the elevator can serve
 
-    def add_request(self, request: Request):
-        with self.lock:
-            # Ensures thread-safe request addition using **threading locks**, adhering to the **Liskov Substitution Principle (LSP)**.
-            if len(self.requests) < self.capacity:
-                self.requests.append(request)
-                print(
-                    f"Elevator {self.id} added request: {request.source_floor} to {request.destination_floor}"
-                )
-                self.condition.notify_all()
+    def request_floor(self, floor):
+        # Add a requested floor to the list if it's not already there.
+        if floor not in self.requests:
+            self.requests.append(floor)
+        # Sort floors based on the current direction
+        if self.direction == Direction.UP:
+            self.requests.sort()  # Floors are sorted in ascending order when moving up.
+        elif self.direction == Direction.DOWN:
+            self.requests.sort(reverse=True)  # Floors are sorted in descending order when moving down.
 
-    def get_next_request(self) -> Request:
-        # **Command Pattern**: The request to move the elevator can be viewed as a command, where
-        # an elevator is instructed to fulfill the next pending request.
-        with self.lock:
-            while not self.requests:
-                self.condition.wait()
-            return self.requests.pop(0)
+    def move(self):
+        # Elevator moves to the next requested floor.
+        if not self.requests:
+            self.direction = Direction.IDLE
+            self.status = Status.STOPPED
+            return
 
-    def process_requests(self):
-        # This method runs an infinite loop to process incoming requests, adhering to the **Single Responsibility Principle (SRP)**.
-        while True:
-            request = self.get_next_request()  # This will wait until there's a request
-            self.process_request(request)
+        # Get the next floor from the list of requests.
+        next_floor = self.requests[0]
 
-    def process_request(self, request: Request):
-        # This method defines the core responsibility of the elevator (moving between floors), adhering to the **Open/Closed Principle (OCP)**,
-        # as it can be extended to include other functionalities without modifying the base logic.
-        start_floor = self.current_floor
-        end_floor = request.destination_floor
+        # Moving logic: up or down
+        if self.current_floor < next_floor:
+            self.direction = Direction.UP
+            self.current_floor += 1
+        elif self.current_floor > next_floor:
+            self.direction = Direction.DOWN
+            self.current_floor -= 1
+        else:
+            # When reached the desired floor, remove it from requests.
+            self.requests.pop(0)
+            self.status = Status.STOPPED
 
-        if start_floor < end_floor:
-            self.current_direction = Direction.UP
-            for i in range(start_floor, end_floor + 1):
-                self.current_floor = i
-                print(f"Elevator {self.id} reached floor {self.current_floor}")
-                time.sleep(1)  # Simulating elevator movement
-        elif start_floor > end_floor:
-            self.current_direction = Direction.DOWN
-            for i in range(start_floor, end_floor - 1, -1):
-                self.current_floor = i
-                print(f"Elevator {self.id} reached floor {self.current_floor}")
-                time.sleep(1)  # Simulating elevator movement
+        # Update status to MOVING when the elevator is in transit.
+        if self.requests:
+            self.status = Status.MOVING
 
-    def run(self):
-        # **Template Method Pattern**: The `run` method invokes `process_requests`
-        # to handle the movement and request processing.
-        self.process_requests()
+    def __str__(self):
+        # Returns the current status of the elevator.
+        return f"Elevator {self.id} at floor {self.current_floor}, direction: {self.direction}, status: {self.status}, requests: {self.requests}"
 
 class ElevatorController:
-    def __init__(self, num_elevators: int, capacity: int):
-        # **Single Responsibility Principle (SRP)**: ElevatorController manages the elevators and requests optimally.
-        # The **Factory Method Pattern** can be applied here for dynamically creating Elevator instances.
-        self.elevators = []
-        for i in range(num_elevators):
-            elevator = Elevator(i + 1, capacity)
-            self.elevators.append(elevator)
-            Thread(target=elevator.run).start()
+    def __init__(self, num_elevators, total_floors):
+        # Initialize multiple elevators.
+        self.elevators = [Elevator(i, total_floors) for i in range(num_elevators)]
+        self.total_floors = total_floors
 
-    def request_elevator(self, source_floor: int, destination_floor: int):
-        # **Facade Pattern**: This method provides a simplified interface for clients to request an elevator.
-        optimal_elevator = self.find_optimal_elevator(source_floor, destination_floor)
-        optimal_elevator.add_request(Request(source_floor, destination_floor))
-
-    def find_optimal_elevator(self, source_floor: int, destination_floor: int) -> Elevator:
-        # **Strategy Pattern**: Different strategies could be applied here for selecting the optimal elevator
-        # (e.g., based on load, direction, or proximity).
-        optimal_elevator = None
-        min_distance = float('inf')
+    def request_elevator(self, floor, direction):
+        # Find the closest elevator that is idle or moving in the desired direction.
+        best_elevator = None
+        best_distance = self.total_floors + 1  # Start with the worst possible distance.
 
         for elevator in self.elevators:
-            distance = abs(source_floor - elevator.current_floor)
-            if distance < min_distance:
-                min_distance = distance
-                optimal_elevator = elevator
+            if elevator.direction == Direction.IDLE:
+                distance = abs(elevator.current_floor + floor)
+                if distance < best_distance:
+                    best_elevator = elevator
+                    best_distance = distance
+            elif elevator.direction == direction:
+                if direction == Direction.UP and elevator.current_floor <= floor:
+                    distance = floor - elevator.current_floor
+                elif direction == Direction.DOWN and elevator.current_floor >= floor:
+                    distance = elevator.current_floor - floor
 
-        return optimal_elevator
+                if distance < best_distance:
+                    best_elevator = elevator
+                    best_distance = distance
 
+        # Assign the request to the best elevator found.
+        if best_elevator:
+            best_elevator.request_floor(floor)
+            print(f"Assigned elevator {best_elevator.id} to floor {floor}")
+
+    def step(self):
+        # Simulate each elevator taking a step (moving one floor).
+        for elevator in self.elevators:
+            elevator.move()
+            print(elevator)
 
 if __name__ == "__main__":
-    controller = ElevatorController(3, 5)
-    time.sleep(3)
-    controller.request_elevator(10, 12)
-    time.sleep(3)
-    controller.request_elevator(1, 7)
-    time.sleep(3)
-    controller.request_elevator(2, 5)
-    time.sleep(3)
-    controller.request_elevator(1, 9)
+    controller = ElevatorController(3, 10)
 
-    # Keep the main thread running
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("Elevator system stopped.")
+    # Requests coming in
+    controller.request_elevator(3, Direction.UP)
+    controller.request_elevator(5, Direction.UP)
+    controller.request_elevator(7, Direction.DOWN)
 
+    # Simulate the elevator system by repeatedly calling step.
+    for _ in range(10):
+        controller.step()
 
 """
-Explaination:
+Explanation:
 
-Classes, Interfaces and Enumerations:
-The Direction enum represents the possible directions of elevator movement (UP or DOWN).
-The Request class represents a user request for an elevator, containing the source floor and destination floor.
-The Elevator class represents an individual elevator in the system. It has a capacity limit and maintains a list of 4. requests. The elevator processes requests concurrently and moves between floors based on the requests.
-The ElevatorController class manages multiple elevators and handles user requests. It finds the optimal elevator to serve a request based on the proximity of the elevators to the requested floor.
-The ElevatorSystem class is the entry point of the application and demonstrates the usage of the elevator system.
+Classes, Interfaces, and Enumerations:
+The Elevator class represents an individual elevator and contains attributes such as current floor, direction, and status. It also manages the requests to visit floors and handles the logic for moving the elevator between floors.
+The ElevatorController class manages multiple elevators. It is responsible for receiving floor requests and assigning them to the most suitable elevator based on direction, distance, and current requests. It also simulates elevator movement.
+The Direction enum defines the possible directions an elevator can move (UP, DOWN, IDLE).
+The Status enum defines the operational states of the elevator (MOVING, STOPPED, MAINTENANCE).
+The system simulates elevator movement through repeated calls to the `step()` method, which moves each elevator one step at a time towards its destination.
+
 """
