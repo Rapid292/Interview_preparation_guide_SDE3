@@ -111,6 +111,8 @@ class ElevatorController:
             print(elevator)
 
 if __name__ == "__main__":
+    num_elevators = 3
+    total_floors = 10
     controller = ElevatorController(3, 10)
 
     # Requests coming in
@@ -121,6 +123,8 @@ if __name__ == "__main__":
     # Simulate the elevator system by repeatedly calling step.
     for _ in range(10):
         controller.step()
+
+
 
 """
 Explanation:
