@@ -257,5 +257,137 @@ https://github.com/ashishps1/awesome-system-design-resources
 
 
 
+### Different Databases Comparisons:
+![Nice Video](https://youtu.be/9mdadNspP_M?si=Nv-HXQJ3DZYyAa22)
+
+#### ACID: ![ACID](ACID.png)
+**ACID** is a set of four important properties that ensure reliable and consistent database transactions. Here's a simple breakdown:
+
+1. **Atomicity**: A transaction must either be **all completed** or **none at all**. If one part fails, the entire transaction is rolled back, ensuring no partial changes.
+   - Example: If you're transferring money between bank accounts, either the money is moved from account A to B entirely, or nothing happens.
+
+2. **Consistency**: A transaction brings the database from one **valid state** to another. It must follow all rules (like unique IDs or foreign key constraints) to keep data correct.
+   - Example: After transferring money, the total amount across all accounts remains the same.
+
+3. **Isolation**: Transactions happening at the same time must not interfere with each other. Each transaction acts as if it's the **only one** running until it's finished.
+   - Example: Two people withdrawing money at the same time won't mess up each other’s balances.
+
+4. **Durability**: Once a transaction is committed, it is **permanently saved**. Even if there’s a power failure, the data will still be there after recovery.
+   - Example: After confirming a money transfer, the change stays in the database even if the server crashes immediately after.
+
+In short, ACID guarantees that database operations are reliable, accurate, and consistent, no matter what happens.
+
+
+#### Key-Value 🐇: REDIS, MEMCACHE, AMAZON DYNAMODB, AEROSPIKE
+![Key-Value](key_value_card.png)
+![Key-Value-Usage](key_value_usage.png)
+- **Flexible for Unstructured Data**
+- **Fast Lookup**
+- **In-Memory Database (except DynamoDB which has persistent storage)**
+- **Not for Complex Data Structures**
+- **Not for ACID transactions (DynamoDB provides eventual consistency)**
+- **Not for Historical Data**
+- **Ideal for Caching and Session Management**
+
+#### Wide-column 🎡: CASSANDRA, HBASE, SCYLLADB, BIGTABLE
+![Wide-Column](wide_column_card.png)
+![Wide-Column-Usage](wide_column_usage.png)
+- **Column layout**
+- **Primary Keys**
+- **Denormalized**
+- **Not for Random Filtering and Rich queries**
+- **Not for Transaction Processing**
+- **High scalability**
+- **Optimized for Writes**
+
+#### Document 📑: MONGODB, COUCHBASE, COUCHDB, AMAZON DOCUMENTDB, FIRESTORE
+![Document](document_card.png)
+![Document-Usage](document_usage.png)
+- **Denormalized**
+- **Handle Unstructured Data**
+- **Indexing and Rich Query**
+- **Not for Complex joins and relationships**
+- **Not for Referential integrity**
+- **Most intuitive for JSON-based Data**
+- **Flexible Schema Design**
+- **Supports Eventual Consistency**
+
+#### Relational 👑: MYSQL, POSTGRESQL, ORACLE, SQL SERVER, AURORA, AMAZON RDS
+![Relational](relational_card.png)
+![Relational-Usage](relational_usage.png)
+- **Mature and formalized datamodel**
+- **Normalization**
+- **Difficult to scale horizontally**
+- **ACID transactions**
+- **Rich Querying Capabilities**
+- **Strong Data Integrity**
+- **Well-suited for complex joins and referential integrity**
+- **High Performance for OLTP and OLAP**
+
+#### Graph 🍇: NEO4J, AMAZON NEPTUNE, ORIENTDB, ARANGODB
+![Graph](graph_card.png)
+![Graph-Usage](graph_usage.png)
+- **No need to compute the relationships at query time**
+- **Handles Complex Data Structures**
+- **Difficult to scale**
+- **Not for Write-heavy workloads**
+- **Multi-hop relationships**
+- **Great for Social Networks, Fraud Detection, and Recommendation Engines**
+- **Efficient for traversing complex relationships**
+
+#### Blob Storage 🌐: AWS S3, AZURE BLOB STORAGE, GOOGLE CLOUD STORAGE, MINIO
+![Blob Storage-Usage](blob_storage_usage.png)
+- **Object Storage for Unstructured Data**
+- **Durable and Scalable**
+- **Eventual Consistency**
+- **Not for Structured Data or Fast Lookups**
+- **Suitable for Backup, Archive, and Media Content**
+- **Supports Replication and Versioning**
+- **Optimized for Large Files**
+
+
+### Consistent Hashing
+
+![Consistent hashing](consistent_hashing.png)
+![Great Article on consistent hashing](https://1levelup.dev/blog/consistent-hashing)
+**Consistent hashing** is a technique used to distribute data across multiple servers (or nodes) in a way that reduces the impact of adding or removing servers. It's commonly used in distributed systems to evenly balance load without requiring massive redistributions when the system changes.
+
+### Key Idea:
+In a traditional hash function, if you add or remove a server, you might have to reassign all keys (data) to different servers. **Consistent hashing** minimizes this reassignment, ensuring only a small portion of the keys are moved when servers are added or removed.
+
+### How it works (with an example):
+1. **The Hash Circle:**
+   Imagine a ring or circle where all possible hash values are laid out from 0 to the maximum hash value.
+
+2. **Servers as Points on the Circle:**
+   When you add servers, you hash their IP addresses (or identifiers) to get a position on this circle. For example, let’s say we have 3 servers, and their positions on the circle are at 10, 30, and 70.
+
+3. **Distributing Data (Keys) to Servers:**
+   Now, to place data (like files or records) onto the servers, we hash each key (data identifier) to a position on the same circle. A key is stored on the first server it "meets" while going clockwise around the circle.
+
+   - Example: If a key hashes to 25, it goes to the server at position 30. If a key hashes to 65, it goes to the server at position 70.
+
+4. **Adding/Removing Servers:**
+   - **Adding a Server**: Say we add a new server at position 50. Now only keys between 30 and 50 will be moved to the new server. Other keys stay where they are, minimizing movement.
+   - **Removing a Server**: If a server is removed (e.g., the one at position 70), only the keys that mapped to that server will need to be redistributed to the next available server (in this case, the server at position 10).
+
+### Example:
+Let’s say we have 3 servers:
+- Server A: Position 10
+- Server B: Position 30
+- Server C: Position 70
+
+Now, we hash our data keys:
+- Key X hashes to 25 → goes to Server B (position 30).
+- Key Y hashes to 40 → goes to Server C (position 70).
+- Key Z hashes to 75 → wraps around the circle and goes to Server A (position 10).
+
+If we add a new server, Server D at position 50, only Key Y (which was between 30 and 70) moves to Server D, reducing the number of moved keys.
+
+### Benefits:
+- **Minimal key movement**: Only a few keys are affected when servers are added or removed.
+- **Scalability**: It works well for large, dynamic systems where servers frequently join or leave the network.
+
+
 ### REMOTE JOBS:
 ![Remote Jobs Repo](https://github.com/lukasz-madon/awesome-remote-job?tab=readme-ov-file)
