@@ -1,3 +1,6 @@
+# Intro:
+![Introduction](introduction.png)
+
 # SDE 3 and Above Interview Preparation Guide
 
 This guide will help you prepare for a data structure and algorithm (DS/Algo) question in a MAANG interview as an SDE 3 with 7 years of experience. It outlines structured and strategic approaches as well as additional topics to ensure comprehensive preparation.
