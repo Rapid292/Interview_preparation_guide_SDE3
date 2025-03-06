@@ -1,9 +1,32 @@
-# Intro:
-![Introduction](introduction.png)
-
 # SDE 3 and Above Interview Preparation Guide
 
-This guide will help you prepare for a data structure and algorithm (DS/Algo) question in a MAANG interview as an SDE 3 with 7 years of experience. It outlines structured and strategic approaches as well as additional topics to ensure comprehensive preparation.
+[![GitHub stars](https://img.shields.io/github/stars/rishabh2912/Interview_preparation_guide_SDE3?style=social)](https://github.com/rishabh2912/Interview_preparation_guide_SDE3/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/rishabh2912/Interview_preparation_guide_SDE3?style=social)](https://github.com/rishabh2912/Interview_preparation_guide_SDE3/network/members)
+
+A comprehensive guide for senior software engineering interviews, covering DS/Algo, System Design, and Leadership aspects.
+
+## 👋 About the Author
+
+**Rishabh Gupta**  
+Engineering Leader | Generative AI Innovator | Python Expert | 0→1 Builder
+[LinkedIn](www.linkedin.com/in/rishabh-gupta29) | [GitHub](https://github.com/rishabh2912) | [Twitter](https://twitter.com/Rapid292)
+
+📧 Contact: gupta.rishabh2912@gmail.com
+
+## ⭐️ Support This Project
+
+If you find this guide helpful, consider:
+
+- Starring the repository ⭐️
+- Sharing it with your network 🌐
+- [Buying me a coffee ☕️](https://www.buymeacoffee.com/YourBuyMeCoffeeLink)
+
+## 📚 How to Use This Guide
+
+1. Star the repository to stay updated with new content
+2. Follow the sections in order, or jump to specific topics
+3. Practice regularly and track your progress
+4. Share your feedback and suggestions via issues
 
 ## Table of Contents
 1. [Tackling DS/Algo Questions](#tackling-ds--algo-questions)
