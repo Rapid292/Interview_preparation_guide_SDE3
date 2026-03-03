@@ -259,6 +259,21 @@ https://github.com/ashishps1/awesome-low-level-design
 ![Great Resource for System Design](https://systemdesignschool.io/problems/)
 https://github.com/ashishps1/awesome-system-design-resources
 [Practice System Design basics (Messaging Queues, Load Balancer, API Gateway, etc.)](https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction)
+#### Key Technologies
+[Key Technologies](https://www.hellointerview.com/learn/system-design/in-a-hurry/key-technologies)
+- API Gateway
+- Load Balancer
+- Queue
+- Streams / Event Sourcing
+- Distributed Lock
+- Distributed Cache
+- CDN
+
+#### Common Patterns
+[Common Patterns](https://www.hellointerview.com/learn/system-design/in-a-hurry/patterns)
+
+#### Core Concepts
+[Core Concepts](https://www.hellointerview.com/learn/system-design/in-a-hurry/core-concepts)
 #### 10 Common System Design Problems
 1. **Design a URL shortening service like TinyURL**
 2. **Design a social media platform like Twitter/Instagram**
@@ -361,6 +376,13 @@ In short, ACID guarantees that database operations are reliable, accurate, and c
 - **Multi-hop relationships**
 - **Great for Social Networks, Fraud Detection, and Recommendation Engines**
 - **Efficient for traversing complex relationships**
+
+#### Search Optimised Database 🔎: ELASTICSEARCH, OPENSEARCH, SOLR, ALGOLIA
+- **Optimized for Full-Text Search**
+- **Inverted Index-based Querying**
+- **Fast Filtering and Aggregations**
+- **Not for Transaction Processing**
+- **Great for Log Analytics, Product Search, and Relevance Ranking**
 
 #### Blob Storage 🌐: AWS S3, AZURE BLOB STORAGE, GOOGLE CLOUD STORAGE, MINIO
 ![Blob Storage-Usage](blob_storage_usage.png)
