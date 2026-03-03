@@ -258,6 +258,7 @@ https://github.com/ashishps1/awesome-low-level-design
 ![Common System Designs](common_system_design_questions.png)
 ![Great Resource for System Design](https://systemdesignschool.io/problems/)
 https://github.com/ashishps1/awesome-system-design-resources
+[Practice System Design basics (Messaging Queues, Load Balancer, API Gateway, etc.)](https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction)
 #### 10 Common System Design Problems
 1. **Design a URL shortening service like TinyURL**
 2. **Design a social media platform like Twitter/Instagram**
