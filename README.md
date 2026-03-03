@@ -377,7 +377,7 @@ In short, ACID guarantees that database operations are reliable, accurate, and c
 - **Great for Social Networks, Fraud Detection, and Recommendation Engines**
 - **Efficient for traversing complex relationships**
 
-#### Search Optimised Database 🔎: ELASTICSEARCH, OPENSEARCH, SOLR, ALGOLIA
+#### Search Optimized Database 🔎: ELASTICSEARCH, OPENSEARCH, SOLR, ALGOLIA
 - **Optimized for Full-Text Search**
 - **Inverted Index-based Querying**
 - **Fast Filtering and Aggregations**
