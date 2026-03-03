@@ -243,15 +243,15 @@ https://github.com/ashishps1/awesome-low-level-design
 [Personal LLD Interview Questions](https://docs.google.com/document/d/1X3zY2E-k7KnJUR2uFmDagl6ClDH5Etag88fSuQ80ZkY/edit#heading=h.uirhx9hdnavb)
 #### 10 Common LLD Interview Problems
 1. **Design a parking lot** [Design a parking lot](https://docs.google.com/document/d/1gP56IvFveexv_zi5RNlNEGTa9bpEp4ocyDk54bcj1Oo/edit?usp=sharing)
-2. **Design a vending machine** [Design a vending machine]()
-3. **Design an elevator system** [Design an elevator system]()
-4. **Design LRU cache** [Design LRU cache]()
-5. **Design a chess game** [Design a chess game]()
-6. **Design snake and ladders** [Design snake and ladders]()
-7. **Design Splitwise** [Design Splitwise]()
-8. **Design logging framework** [Design logging framework]()
-9. **Design hotel management system** [Design hotel management system]()
-10. **Design movie ticket booking syetem** [Design movie ticket booking syetem]()
+2. **Design a vending machine**
+3. **Design an elevator system**
+4. **Design LRU cache**
+5. **Design a chess game**
+6. **Design snake and ladders**
+7. **Design Splitwise**
+8. **Design logging framework**
+9. **Design hotel management system**
+10. **Design movie ticket booking system**
 
 
 ### System Design: - video[https://www.youtube.com/watch?v=l3X1t3kpmwY]
@@ -260,14 +260,16 @@ https://github.com/ashishps1/awesome-low-level-design
 https://github.com/ashishps1/awesome-system-design-resources
 [Practice System Design basics (Messaging Queues, Load Balancer, API Gateway, etc.)](https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction)
 #### Key Technologies
+![Key Technologies](key_technologies.png)
 [Key Technologies](https://www.hellointerview.com/learn/system-design/in-a-hurry/key-technologies)
-- API Gateway
-- Load Balancer
-- Queue
-- Streams / Event Sourcing
-- Distributed Lock
-- Distributed Cache
-- CDN
+
+- **API Gateway**: Acts as the single entry point for a system, handling requests, routing, authentication, and rate limiting.
+- **Load Balancer**: Distributes incoming network traffic evenly across multiple servers to ensure high availability and reliability.
+- **Message Queue**: Facilitates asynchronous communication between services by temporarily storing messages (e.g., RabbitMQ, SQS).
+- **Streams / Event Sourcing**: Handles continuous, high-volume real-time data flows, allowing systems to react to events as they happen (e.g., Apache Kafka).
+- **Distributed Lock**: Ensures that multiple distributed processes do not simultaneously access a shared resource, preventing race conditions.
+- **Distributed Cache**: Stores frequently accessed data in memory (like Redis or Memcached) to significantly speed up read operations and reduce database load.
+- **CDN (Content Delivery Network)**: A globally distributed network of servers that caches static content closer to users, reducing latency.
 
 #### Common Patterns
 [Common Patterns](https://www.hellointerview.com/learn/system-design/in-a-hurry/patterns)
@@ -378,6 +380,7 @@ In short, ACID guarantees that database operations are reliable, accurate, and c
 - **Efficient for traversing complex relationships**
 
 #### Search Optimized Database 🔎: ELASTICSEARCH, OPENSEARCH, SOLR, ALGOLIA
+![Search Optimised Database](search_optimised_db.png)
 - **Optimized for Full-Text Search**
 - **Inverted Index-based Querying**
 - **Fast Filtering and Aggregations**
@@ -438,5 +441,5 @@ If we add a new server, Server D at position 50, only Key Y (which was between 3
 - **Scalability**: It works well for large, dynamic systems where servers frequently join or leave the network.
 
 
-### REMOTE JOBS:
-![Remote Jobs Repo](https://github.com/lukasz-madon/awesome-remote-job?tab=readme-ov-file)
+### Remote Jobs
+[Awesome Remote Job Repository](https://github.com/lukasz-madon/awesome-remote-job?tab=readme-ov-file)
