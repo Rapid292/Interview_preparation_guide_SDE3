@@ -441,5 +441,20 @@ If we add a new server, Server D at position 50, only Key Y (which was between 3
 - **Scalability**: It works well for large, dynamic systems where servers frequently join or leave the network.
 
 
+## Networking:
+  <img width="759" height="586" alt="image" src="https://github.com/user-attachments/assets/8c7ce41f-6551-4d60-bd03-fb377bc21cb5" />
+
+### Network Layer (Layer 3)
+At this layer is IP, the protocol that handles routing and addressing. It's responsible for breaking the data into packets, handling packet forwarding between networks, and providing best-effort delivery to any destination IP address on the network. While there are other protocols at this layer (like InfiniBand, which is used extensively for massive ML training workloads), IP is by far the most common for system design interviews.
+
+### Transport Layer (Layer 4)
+At this layer, we have TCP, QUIC, and UDP, which provide end-to-end communication services. Think of them like a layer that provides features like reliability, ordering, and flow control on top of the network layer.
+
+### Application Layer (Layer 7)
+At the final layer are the application protocols like DNS, HTTP, Websockets, and WebRTC. These are common protocols that build on top of TCP (or UDP, in the case of WebRTC) to provide a layer of abstraction for different types of data typically associated with web applications. We'll cover them in depth.
+These layers work together to enable all our network communications. To see how they interact in practice, let's walk through a concrete example of how a simple web request works.
+
+
+
 ### Remote Jobs
 [Awesome Remote Job Repository](https://github.com/lukasz-madon/awesome-remote-job?tab=readme-ov-file)
